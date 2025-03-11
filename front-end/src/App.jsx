@@ -1,7 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import loadable from "@loadable/component";
@@ -10,8 +7,10 @@ import BasicLayout from "./layouts/BasicLayout";
 import BlankLayout from "./layouts/LayoutNotSearch";
 
 const Login = loadable(() => import("./pages/Auth/Login"));
-const Home = loadable(() => import("./pages/Home"));
 const Regiter = loadable(() => import("./pages/Auth/Register"));
+const Home = loadable(() => import("./pages/Home"));
+const MailTemplate = loadable(() => import("./pages/MailForm"));
+
 export default function App() {
     return (
         <BrowserRouter>
@@ -25,6 +24,14 @@ export default function App() {
                         element={
                             <Suspense fallback={<CircularProgress />}>
                                 <Home title="Trang Chủ" />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/biểu-mẫu-mail"
+                        element={
+                            <Suspense fallback={<CircularProgress />}>
+                                <MailTemplate title="Biểu mẫu mail" />
                             </Suspense>
                         }
                     />
@@ -46,7 +53,7 @@ export default function App() {
                             </Suspense>
                         }
                     />
-                </Route>   
+                </Route>
             </Routes>
         </BrowserRouter>
     );
