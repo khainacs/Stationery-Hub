@@ -10,7 +10,8 @@ const Login = loadable(() => import("./pages/Auth/Login"));
 const Regiter = loadable(() => import("./pages/Auth/Register"));
 const Home = loadable(() => import("./pages/Home"));
 const MailTemplate = loadable(() => import("./pages/MailForm"));
-
+const Cart = loadable(() => import('./pages/Cart'));
+const Payment = loadable(() => import('./pages/Payment'));
 export default function App() {
     return (
         <BrowserRouter>
@@ -28,10 +29,26 @@ export default function App() {
                         }
                     />
                     <Route
-                        path="/biểu-mẫu-mail"
+                        path="/bieu-mau-mail"
                         element={
                             <Suspense fallback={<CircularProgress />}>
                                 <MailTemplate title="Biểu mẫu mail" />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/gio-hang"
+                        element={
+                            <Suspense fallback={<CircularProgress />}>
+                                <Cart title="Giỏ hàng" />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/thanh-toan"
+                        element={
+                            <Suspense fallback={<CircularProgress />}>
+                                <Payment title="Payment" />
                             </Suspense>
                         }
                     />
