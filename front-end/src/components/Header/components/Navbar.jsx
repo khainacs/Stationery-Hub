@@ -119,27 +119,27 @@ const DropdownMenu = ({ title, data }) => {
                              group-hover:rotate-0 "
                 />
             </button>
-            <div className="absolute left-0 mt-2 min-w-[1000px] rounded-md shadow-lg bg-slate-500 opacity-0 invisible 
+            <div className="absolute left-0 mt-2 min-w-[1000px] rounded-md shadow-lg bg-blue-700 opacity-0 invisible 
                           group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                 <div className="rounded-md ring-1 ring-black ring-opacity-5">
                     <div className="py-2 px-4">
                         <div className="flex gap-[1%] flex-wrap content-start">
                             <div className="w-[30%] h-3/4 p-2">
-                                <div className="font-nunito text-[25px] text-slate-200">
+                                <div className="font-nunito text-[22px] text-white">
                                     Danh Mục Sản Phẩm
                                     
                                 </div>
                                 {Object.keys(flattenedItems).map((category, index) => (
-                                        <div key={index} className="block p-2 text-sm text-white hover:bg-yellow-500
-                                                    hover:text-white transition-colors duration-150"
+                                        <div key={index} className={`block p-2 text-[15px] text-white hover:bg-gray-500
+                                                    hover:text-white transition-colors duration-150 ${selectedCategory === category ? 'bg-gray-500': 'text-white'}`}
                                                     onMouseEnter={()=> setSelectedCategory(category)}>
                                             {category}
                                         </div>
                                     ))}
                             </div>
-                            <div className="grow h-3/4 border--2 border-slate-600">
+                            <div className="grow h-3/4 border-l-[1px] border-gray-700">
                                 <div className="w-[100%] p-2">
-                                    <div className="font-nunito text-[20px] text-yellow-300">{selectedCategory}</div>
+                                    <div className="font-nunito text-[20px] text-white">{selectedCategory}</div>
                                     <div className="flex flex-wrap gap-4 space-x-4">
                                         {Object.keys(flattenedItems[selectedCategory]).map((subCategory, subIndex) =>(
                                             <div key={subIndex} className="mt-2">
@@ -148,7 +148,7 @@ const DropdownMenu = ({ title, data }) => {
                                                         <a
                                                             key={subjectIndex}
                                                             href={subject.path}
-                                                            className="block p-1 text-xs text-white hover:text-yellow-500 transition-colors duration-150"
+                                                            className="block p-1 text-sm text-white hover:text-yellow-500 transition-colors duration-150"
                                                         >
                                                             {subject.name}  {/* Đảm bảo hiển thị đúng tên của subject */}
                                                         </a>
